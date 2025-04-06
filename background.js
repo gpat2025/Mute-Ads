@@ -26,14 +26,6 @@ chrome.webRequest.onBeforeRequest.addListener(
           chrome.action.setBadgeText({ text: remaining.toString(), tabId: details.tabId });
           chrome.action.setBadgeBackgroundColor({ color: "#FF0000", tabId: details.tabId });
 
-          chrome.notifications.create({
-            type: "basic",
-            iconUrl: "off.png",
-            title: "Ad Playing",
-            message: `Tab muted. ${remaining} seconds remaining...`,
-            priority: 0
-          });
-
           remaining--;
 
           if (remaining < 0) {
@@ -42,14 +34,6 @@ chrome.webRequest.onBeforeRequest.addListener(
             console.log("Unmuted tab after", delay, "seconds");
 
             chrome.action.setBadgeText({ text: "", tabId: details.tabId });
-
-            chrome.notifications.create({
-              type: "basic",
-              iconUrl: "on.png",
-              title: "Ad Finished",
-              message: "Tab unmuted.",
-              priority: 1
-            });
           }
         }, 1000);
       }
