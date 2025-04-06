@@ -1,6 +1,10 @@
 # 🧹 Chrome Extension: Auto Mute Tab When Ad Plays
 
 This Chrome extension automatically mutes a browser tab when a live sports stream plays an ad, and unmutes it after the ad ends — based on detecting specific tracking URLs and parsing the ad duration.
+Created by : Akshay S, Gaurav P
+Documentation : Gaurav P (by chat-gpt)
+Idea by : Sanket
+
 
 ---
 
