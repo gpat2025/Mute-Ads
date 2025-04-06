@@ -22,7 +22,7 @@ Chrome doesn’t allow unlisted extensions without publishing, but you can easil
 1. **Download or Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/gpat2025/Mute-Ads.git
    ```
 
    Or click **Code → Download ZIP**, then extract it.
