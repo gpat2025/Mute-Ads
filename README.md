@@ -13,6 +13,7 @@ This Chrome extension automatically mutes a browser tab when a live sports strea
 
 - ✅ Mutes tab when ad is detected
 - ⏳ Shows countdown on extension badge
+  ![image](https://github.com/user-attachments/assets/6470a136-c10a-4307-b999-34d14ddf23de)
 - 🔇 Unmutes tab automatically when ad is over
 - 🧠 Ad duration extracted dynamically from URL (e.g. `DTD15s` → 15 seconds)
 
