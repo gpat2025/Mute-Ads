@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Tab Audio Toggle Extension",
+    "version": "1.0",
+    "description": "Mutes a tab if a network request URL contains 'ct_i' and unmutes it after a delay adjustable via a slider in the extension popup.",
+    "permissions": [
+      "webRequest",
+      "tabs",
+      "storage",
+	  "notifications"
+    ],
+    "host_permissions": ["<all_urls>"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_title": "Ad Mute Controller",
+	  "default_icon": "on.png"
+    }
+  }
+  
