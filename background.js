@@ -71,7 +71,8 @@ function estimateAdDuration(adName = "", campaignName = "", goalName = "") {
 
   const directMatch = adName?.match(/DTD(\d+)s/i);
   if (directMatch) return parseInt(directMatch[1]);
-
+  const endMatch = adName?.match(/_(\d+)$/);
+  if (endMatch) return parseInt(endMatch[1]);
   if (fullString.includes("15")) return 15;
   if (fullString.includes("30")) return 30;
   if (fullString.includes("bumper") || fullString.includes("short") || fullString.includes("pre-roll")) return 6;
