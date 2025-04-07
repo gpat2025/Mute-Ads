@@ -44,12 +44,12 @@
     }
 
     // Event listeners
-    /* document.getElementById("clearBtn").addEventListener("click", () => {
+     document.getElementById("clearBtn").addEventListener("click", () => {
       chrome.storage.local.set({ muteHistory: [] }, () => {
         adStats = [];
         renderDashboard(adStats);
       });
-    }); */
+    });
 
     document.getElementById("exportBtn").addEventListener("click", () => {
       const csv = "Ad Name,Count,Total Duration (s)\n" + adStats.map(stat =>
