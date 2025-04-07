@@ -68,11 +68,24 @@ chrome.contextMenus.onClicked.addListener((info) => {
 
 function estimateAdDuration(adName = "", campaignName = "", goalName = "") {
   const fullString = [adName, campaignName, goalName].join(" ").toLowerCase();
-
+  
   const directMatch = adName?.match(/DTD(\d+)s/i);
   if (directMatch) return parseInt(directMatch[1]);
-  const endMatch = adName?.match(/_(\d+)$/);
-  if (endMatch) return parseInt(endMatch[1]);
+
+  const patterns = [
+    /(\d{2})s/,                              // Pattern 1: 20s, 30s, etc.
+    /_(\d{2})$/,                             // Pattern 2: ends with _20, _10
+    /_(\d{2})_(ENG|HIN|HING|TAM|KAN|BEN|MAR|TEL)/, // Pattern 3: _20_ENG, etc.
+    /_(\d{2})(?:_|$)/                        // Pattern 4: general fallback
+  ];
+
+  for (const pattern of patterns) {
+    const match = adString.match(pattern);
+    if (match) {
+      return parseInt(match[1], 10);
+    }
+  }
+
   if (fullString.includes("15")) return 15;
   if (fullString.includes("30")) return 30;
   if (fullString.includes("bumper") || fullString.includes("short") || fullString.includes("pre-roll")) return 6;
