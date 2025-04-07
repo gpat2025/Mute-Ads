@@ -69,46 +69,24 @@ chrome.contextMenus.onClicked.addListener((info) => {
 function estimateAdDuration(adName = "", campaignName = "", goalName = "") {
   const fullString = [adName, campaignName, goalName].join(" ").toLowerCase();
   
-  const directMatch = adName?.match(/DTD(\d+)s/i);
-  if (directMatch) return parseInt(directMatch[1]);
-  const hinMatch = adName?.match(/HIN_(\d{2})/);
-  if(hinMatch) return parseInt(hinMatch[1]);
-  const hingMatch = adName?.match(/HING_(\d{2})/);
-  if(hingMatch) return parseInt(hingMatch[1]);
-  const engMatch = adName?.match(/ENG_(\d{2})/);
-  if(engMatch) return parseInt(engMatch[1]);
-
-  const hindiMatch = adName?.match(/HINDI_(\d{2})/);
-  if(hindiMatch) return parseInt(hindiMatch[1]);
-
-  const hinMatchRev = adName?.match(/_(\d{2})_HIN/);
-  if (hinMatchRev) return parseInt(hinMatchRev[1]);
-  const hingMatchRev = adName?.match(/_(\d{2})_HING/);
-  if (hingMatchRev) return parseInt(hingMatchRev[1]);
-  const engMatchRev = adName?.match(/_(\d{2})_ENG/);
-  if (engMatchRev) return parseInt(engMatchRev[1]);
-
-  const hindiMatchRev = adName?.match(/_(\d{2})_HINDI/);
-  if (hindiMatchRev) return parseInt(hindiMatchRev[1]);
-
-
-  const secMatch = adName?.match(/(\d{2})s/);
-  if(secMatch) return parseInt(secMatch[1]);
-  /*
-  const patterns = [
-    /(\d{2})s/,                              // Pattern 1: 20s, 30s, etc.
-    /_(\d{2})$/,                             // Pattern 2: ends with _20, _10
-    /(ENG|HIN|TAM|KAN|BEN|MAR|TEL)_(\d{2})/,
-    /_(\d{2})_(ENG|HIN|HING|TAM|KAN|BEN|MAR|TEL)/, // Pattern 3: _20_ENG, etc.
+  const patterns = [ //Additional pattern founds for newer ad will go here.
+    /DTD(\d+)s/i,
+    /HIN_(\d{2})/,
+    /HING_(\d{2})/,
+    /ENG_(\d{2})/,
+    /HINDI_(\d{2})/,
+    /_(\d{2})_HIN/,
+    /_(\d{2})_HING/,
+    /_(\d{2})_ENG/,
+    /_(\d{2})_HINDI/,
+    /(\d{2})s/
   ];
 
   for (const pattern of patterns) {
     const match = adName.match(pattern);
-    if (match) {
-      return parseInt(match[1], 10);
-    }
+    if (match) return parseInt(match[1]);
   }
-  */
+
   if (fullString.includes("15")) return 15;
   if (fullString.includes("30")) return 30;
   if (fullString.includes("bumper") || fullString.includes("short") || fullString.includes("pre-roll")) return 6;
