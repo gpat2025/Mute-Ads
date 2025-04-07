@@ -21,9 +21,9 @@ chrome.webRequest.onBeforeRequest.addListener(
         }
 
         // Countdown logic
-        let remaining = delay;
+        let remaining = delay - 0.5;
         const intervalId = setInterval(() => {
-          chrome.action.setBadgeText({ text: remaining.toString(), tabId: details.tabId });
+          chrome.action.setBadgeText({ text: (remaining + 0.5).toString(), tabId: details.tabId });
           chrome.action.setBadgeBackgroundColor({ color: "#FFFFFF", tabId: details.tabId });
 
           remaining--;
