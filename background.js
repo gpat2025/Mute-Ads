@@ -75,12 +75,13 @@ function estimateAdDuration(adName = "", campaignName = "", goalName = "") {
   const patterns = [
     /(\d{2})s/,                              // Pattern 1: 20s, 30s, etc.
     /_(\d{2})$/,                             // Pattern 2: ends with _20, _10
+    /(ENG|HIN|TAM|KAN|BEN|MAR|TEL)_(\d{2})/,
     /_(\d{2})_(ENG|HIN|HING|TAM|KAN|BEN|MAR|TEL)/, // Pattern 3: _20_ENG, etc.
     /_(\d{2})(?:_|$)/                        // Pattern 4: general fallback
   ];
 
   for (const pattern of patterns) {
-    const match = adString.match(pattern);
+    const match = adName.match(pattern);
     if (match) {
       return parseInt(match[1], 10);
     }
